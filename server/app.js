@@ -12,9 +12,6 @@ const { port, dbUrl, corsConfig} = require('./config')
 const viewsH = require('../views/index')
 const controller = require('./middleware/controller')
 
-const db = require('./db')
-// db.connect(dbUrl, { useNewUrlParser: true })
-
 app.use(bodyParser())
 
 app.use(static(path.join(__dirname, '../public')))

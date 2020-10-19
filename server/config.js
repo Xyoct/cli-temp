@@ -1,6 +1,11 @@
 module.exports = {
     port: 3030,
-    dbUrl: "mongodb://localhost:27017/mywebsite",
+    dbConfig: {
+        host: 'localhost',
+        user: 'root',
+        password: 'xuyue123',
+        database: 'XYTEST'
+    },
     corsConfig: {
         origin: "*",
         exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],

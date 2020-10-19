@@ -1,4 +1,6 @@
 
+let dbQuery = require('../db')
+
 const callbackHome = async ctx => {
     await ctx.render('home', {
         title: "website",
