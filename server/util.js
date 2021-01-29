@@ -42,7 +42,7 @@ function formatUpdateSql(searchKey, searchValue, newObj, tableName) {
     return "UPDATE " + tableName + " SET " + __arr.join(",") + " WHERE " + searchKey + "=" + searchValue + ";"
 }
 
-function formatDelete(deleteKey, deleteValue, tableName) {
+function formatDeleteSql(deleteKey, deleteValue, tableName) {
     return "DELETE FROM " + tableName + " WHERE " + deleteKey + "='" + deleteValue + "';"
 }
 
@@ -63,5 +63,5 @@ module.exports = {
     formatInsertSql: formatInsertSql,
     formatSearchSql: formatSearchSql,
     formatUpdateSql: formatUpdateSql,
-    formatDelete: formatDelete
+    formatDeleteSql: formatDeleteSql
 }
