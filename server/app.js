@@ -15,6 +15,7 @@ const controller = require('./middleware/controller')
 const db = require('./db')
 // db.connect(dbUrl, { useNewUrlParser: true })
 
+app.use(logger())
 app.use(bodyParser())
 
 app.use(static(path.join(__dirname, '../public')))
@@ -24,7 +25,6 @@ app.use(controller())
 app.use(cors(corsConfig))
 app.use(router.routes())
 
-app.use(logger())
 app.listen(port)
 console.log(`.......................`)
 console.log(`app listen at ${port}`)
