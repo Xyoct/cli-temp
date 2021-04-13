@@ -46,6 +46,16 @@ function formatDeleteSql(deleteKey, deleteValue, tableName) {
     return "DELETE FROM " + tableName + " WHERE " + deleteKey + "='" + deleteValue + "';"
 }
 
+function formatRequestLogText(ctx) {
+    let _str = `${ctx.request.method} ${ctx.request.url}`
+    return _str
+}
+
+function formatResponseLogText(ctx) {
+    let _str = `${ctx.request.method} ${ctx.request.url} ${ctx.response.status} ${ctx.response.message}`
+    return _str
+}
+
 function ResBodySuccess(data) {
     this.code = '000000'
     this.msg = '成功'
@@ -63,5 +73,7 @@ module.exports = {
     formatInsertSql: formatInsertSql,
     formatSearchSql: formatSearchSql,
     formatUpdateSql: formatUpdateSql,
-    formatDeleteSql: formatDeleteSql
+    formatDeleteSql: formatDeleteSql,
+    formatRequestLogText: formatRequestLogText,
+    formatResponseLogText: formatResponseLogText
 }
