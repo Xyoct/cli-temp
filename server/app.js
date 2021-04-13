@@ -5,7 +5,6 @@ const views = require('koa-views')
 const cors = require('koa2-cors')
 const router = require('koa-router')()
 const bodyParser = require('koa-bodyparser')
-const logger = require('koa-logger')
 
 const app = new Koa()
 const { port, dbUrl, corsConfig} = require('./config')
@@ -15,7 +14,20 @@ const controller = require('./middleware/controller')
 const db = require('./db')
 // db.connect(dbUrl, { useNewUrlParser: true })
 
-app.use(logger())
+const {logger, loggerErr} = require("./logs");
+const {formatRequestLogText, formatResponseLogText} = require("./util");
+
+
+app.use(async (ctx, next) => {
+    try {
+        logger.info(formatRequestLogText(ctx));
+        await next()
+        logger.info(formatResponseLogText(ctx));
+    } catch (err) {
+        loggerErr.error(err);
+    }
+})
+
 app.use(bodyParser())
 
 app.use(static(path.join(__dirname, '../public')))
